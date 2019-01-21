@@ -77,11 +77,13 @@ const readNote = (title) => {
 };
 
 
+/**
+ *  remove note definition
+ * @param {string} title - title of the note
+ */
 const removeNote = (title) => {
   try {
     const noteToRemove = fetchNotesFromFile().filter(note => note.title !== title);
-    // remove the file
-    fs.unlink(`${__dirname}${notesFileName}`, err => console.log(err));
     saveFileJSON(`${__dirname}${notesFileName}`, JSON.stringify(noteToRemove));
     return `Note with title ${title} has been removed`;
   } catch (e) {
