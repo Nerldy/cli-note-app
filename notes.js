@@ -41,7 +41,7 @@ const addNote = (title = '', body = '') => {
       const checkTitile = readNoteFromFile.filter(word => word.title === title || word.body === body);
 
       if (checkTitile.length >= 1) {
-        return 'Title or body duplicate. There can only be one uniq title and body in a note.';
+        return 'Title or body duplicate. Notes should have a uniq title and body.';
       }
       noteList = JSON.stringify([...readNoteFromFile, note]);
       return saveFileJSON(`${__dirname}${notesFileName}`, noteList);
