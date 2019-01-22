@@ -41,7 +41,7 @@ const addNote = (title = '', body = '') => {
       const checkTitile = readNoteFromFile.filter(word => word.title === title || word.body === body);
 
       if (checkTitile.length >= 1) {
-        return 'Title or body duplicate. There can only be one uniq title and body in a note.';
+        return 'Title or body duplicate. Notes should have a uniq title and body.';
       }
       noteList = JSON.stringify([...readNoteFromFile, note]);
       return saveFileJSON(`${__dirname}${notesFileName}`, noteList);
@@ -77,11 +77,13 @@ const readNote = (title) => {
 };
 
 
+/**
+ *  remove note definition
+ * @param {string} title - title of the note
+ */
 const removeNote = (title) => {
   try {
     const noteToRemove = fetchNotesFromFile().filter(note => note.title !== title);
-    // remove the file
-    fs.unlink(`${__dirname}${notesFileName}`, err => console.log(err));
     saveFileJSON(`${__dirname}${notesFileName}`, JSON.stringify(noteToRemove));
     return `Note with title ${title} has been removed`;
   } catch (e) {
