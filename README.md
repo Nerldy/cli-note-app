@@ -18,7 +18,7 @@ Make sure you have [Node installed](https://nodejs.org/en/).
 
 ## Commands
 
-There are four commands for this app, [add](###add).
+There are four commands for this app, [add](###add), [list](###list), [read](###read), and [remove](###remove).
 
 For more info, in the terminal run `node index.js --help` and it will print out the [commands](##Commands) documentation.
 
