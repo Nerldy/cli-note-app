@@ -1,12 +1,39 @@
 console.log(`${'='.repeat(100)}>>`, 'starting notes app');
 
 const yargs = require('yargs');
-const fs = require('fs');
 const notes = require('./notes');
 
-const command = yargs.argv._[0].toLowerCase();
+const command = yargs
+  . command('add', 'add a new note', {
+    title: {
+      describe: 'title of note',
+      demand: true,
+      alias: 't',
+    },
+    body: {
+      describe: 'body of note',
+      demand: true,
+      alias: 'b',
+    },
+  })
+  .command('list', 'lists all notes')
+  .command('read', 'read a note', {
+    title: {
+      describe: 'title of note',
+      demand: true,
+      alias: 't',
+    },
+  })
+  .command('remove', 'remove a note', {
+    title: {
+      describe: 'title of note',
+      demand: true,
+      alias: 't',
+    },
+  })
+  .help()
+  .argv._[0].toLowerCase();
 const { title, body } = yargs.argv;
-console.log(yargs.argv);
 
 
 switch (command) {
